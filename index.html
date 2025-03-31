@@ -56,12 +56,21 @@ integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cD
                     }
             }      
             }
-            
-            for(let i =0; i<myArray.length;i++)
+           
+                
+           
+            document.write('<table>');
+                document.write('<th>Fact Id</th><th>Fact</th>');
+                for(let i =0; i < myArray.length; i++)
             {
-                document.write("<br>FactId:" + ArrayId[i]+"<br>");
-                document.write(myArray[i]);
+                document.write('<tr>');
+                document.write('<th>' +ArrayId[i]+'</th>');
+                document.write('<th>'+ myArray[i]+'</th>');
+                document.write('</tr>');
+
             }
+            document.write('</table>');
+
         }
 
 
