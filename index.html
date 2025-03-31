@@ -1,0 +1,73 @@
+<html>
+    <head>
+        <title>First API</title>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
+integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <p id ="demo"></p>
+    <script>
+        myFunction();
+
+        async function myFunction()
+
+        {
+            const url ="https://brianobruno.github.io/cats.json";
+            const options =  
+            {
+                 method: 'GET',
+            };
+            const response = await fetch(url,options);
+            var result = await 
+            response.text();
+            const myObj = JSON.parse(result);
+            var holder ;
+            var holderid ;
+            var order = [];
+            var myArray = [];
+            myArray[0]= result.slice(46,120);
+            myArray[1]= result.slice(186,372);
+            myArray[2]= result.slice(439,533);
+            myArray[3]= result.slice(600,698);
+            myArray[4]= result.slice(765,869);
+
+            ArrayId = [1,4,2,5,3];
+            for (let i = 0; i<myArray.length;i++)
+            {
+                let position = i;
+                for (let j = 0;j<myArray.length-1;j++)
+            {
+                    if(ArrayId[i]<ArrayId[j])
+                    {
+                        holder = myArray[j];
+                        holderid = ArrayId[j];
+                        myArray[j] = myArray[i];
+                        myArray[i] = holder;
+                        ArrayId[j] = ArrayId[i];
+                        ArrayId[i]=holderid;
+
+                    }
+            }      
+            }
+            
+            for(let i =0; i<myArray.length;i++)
+            {
+                document.write("<br>FactId:" + ArrayId[i]+"<br>");
+                document.write(myArray[i]);
+            }
+        }
+
+
+    </script>
+    
+        
+
+    </body>
+</html>
