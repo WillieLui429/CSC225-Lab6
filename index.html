@@ -11,13 +11,9 @@ integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
 integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     </head>
-    <body>
-        <p id ="demo"></p>
     <script>
-        myFunction();
-
+        
         async function myFunction()
-
         {
             const url ="https://brianobruno.github.io/cats.json";
             const options =  
@@ -37,12 +33,13 @@ integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cD
             myArray[2]= result.slice(439,533);
             myArray[3]= result.slice(600,698);
             myArray[4]= result.slice(765,869);
+            var pic = result.slice(929,1037);
 
             ArrayId = [1,4,2,5,3];
-            for (let i = 0; i<myArray.length;i++)
+            for (let i = 0; i < myArray.length;i++)
             {
                 let position = i;
-                for (let j = 0;j<myArray.length-1;j++)
+                for (let j = 0;j < myArray.length-1;j++)
             {
                     if(ArrayId[i]<ArrayId[j])
                     {
@@ -57,8 +54,7 @@ integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cD
             }      
             }
            
-                
-           
+                   
             document.write('<table>');
                 document.write('<th>Fact Id</th><th>Fact</th>');
                 for(let i =0; i < myArray.length; i++)
@@ -70,13 +66,32 @@ integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cD
 
             }
             document.write('</table>');
+  
+            const img = new Image();
+            img.onload = () => {
+            // Execute code after the image has loaded
+            document.body.appendChild(img);
+            };
+            img.onerror = () => {
+            // Handle image loading error
+            console.error('Error loading image');
+            };
+            img.src = pic;
+
+
+            img.style.width = '25%';
+            img.style.borderRadius = '25%';
+
+
 
         }
-
-
     </script>
+
+    <body>
+    <img src = "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg" width = "25%" height ="25%">
+    <button onclick = "myFunction()">Get cat facts</button> 
     
-        
 
     </body>
+   
 </html>
